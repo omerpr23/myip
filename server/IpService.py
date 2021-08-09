@@ -12,7 +12,7 @@ class IpService:
 
     def get_ip_info(self, ip_address):
         fields = 'ip,city'
-        url = f'{self.__url}/{ip_address}?access_key={self.__key}&fields={fields}'
+        url = f'{self.__url}/{ip_address}?access_key={self.__key}'
         headers = {'content-type': 'application/json'}
         response = (requests.get(url, headers)).json()
         if 'error' in response:
