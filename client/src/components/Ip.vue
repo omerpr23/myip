@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     async getIpAndLocation() {
-      const path = 'http://localhost:8000/api/ip';
+      const path = '/api/ip';
       try {
         const res = await axios.get(path);
         this.ip = res.data.ip;
