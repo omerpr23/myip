@@ -18,7 +18,8 @@ def index():
 @app.route('/api/ip', methods=['GET'])
 def get_ip():
     logging.info("About to process GET API request...")
-    return ips.get_ip_info(request.headers.get('X-Forwarded-For', request.remote_addr))
+    ip_address = request.headers.get('X-Forwarded-For', request.remote_addr)
+    return ips.get_ip_info(ip_address)
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8000))
