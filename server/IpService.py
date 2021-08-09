@@ -10,15 +10,15 @@ class IpService:
         self.__key = Config.IPSTACK_KEY
         self.__db = DBService()
 
-    def get_ip(self):
+    def get_ip_info(self, ip_address):
         fields = 'ip,city'
-        url = f'{self.__url}/check?access_key={self.__key}&fields={fields}'
+        url = f'{self.__url}/{ip_address}?access_key={self.__key}&fields={fields}'
         headers = {'content-type': 'application/json'}
         response = (requests.get(url, headers)).json()
         if 'error' in response:
             error = f"Error {response['error']['code']}: {response['error']['info']}"
             logging.error("Failed to fetch IP.", error)
-            return error
+            raise error
         else:
             visitor = Visitor(response['ip'], response['city'])
             self.__db.add_visitor(visitor)

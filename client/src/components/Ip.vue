@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Your IP is:{{ ip }}</h1>
+    <h1>Your IP is: {{ ip }}</h1>
     <h2>Your Location is: {{ location }}</h2>
   </div>
 </template>
