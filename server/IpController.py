@@ -7,12 +7,13 @@ import os
 load_dotenv()
 
 # instantiate the app
-app = Flask(__name__, static_folder='../client/dist/',    static_url_path='/')
+app = Flask(__name__, static_folder='../client/dist/')
 CORS(app, resources={r'/*': {'origins': '*'}})
 ips = IpService()
 
 @app.route('/api/ip', methods=['GET'])
 def get_ip():
+    logging.info("About to process GET API request...")
     return ips.get_ip()
 
 if __name__ == '__main__':

@@ -1,11 +1,15 @@
 {
-	"name": "heroku-flask-vue",
+	"name": "client",
 	"version": "0.1.0",
 	"private": true,
+	"scripts": {
+	  "start": "cd server && gunicorn IpController:app",
+	  "build": "cd client && npm run build",
+	  "postinstall": "cd client && npm run build"
+	},
 	"dependencies": {
 	  "axios": "^0.21.1",
 	  "core-js": "^3.6.5",
-	  "eslint": "^7.13.0",
 	  "vue": "^2.6.11",
 	  "vue-router": "^3.5.2"
 	},
@@ -18,26 +22,24 @@
 	  "eslint-plugin-vue": "^6.2.2",
 	  "vue-template-compiler": "^2.6.11"
 	},
-	"scripts": {
-	  "start": "cd server && gunicorn IpController:app",
-	  "build": "cd client && npm run build"
-	},
 	"eslintConfig": {
-	  "extends": "plugin:vue/recommended"
-	},
-	"browserslist": {
-	  "production": [
-		">0.2%",
-		"not dead",
-		"not op_mini all"
+	  "root": true,
+	  "env": {
+		"node": true
+	  },
+	  "extends": [
+		"plugin:vue/essential",
+		"eslint:recommended"
 	  ],
-	  "development": [
-		"last 1 chrome version",
-		"last 1 firefox version",
-		"last 1 safari version"
-	  ]
+	  "parserOptions": {
+		"parser": "babel-eslint"
+	  },
+	  "rules": {}
 	},
-	"engines": {
-	  "node": "12.x"
-	}
+	"browserslist": [
+	  "> 1%",
+	  "last 2 versions",
+	  "not dead"
+	]
   }
+  
